@@ -13,3 +13,4 @@
 ESTADO=$1
 
 echo "Procesando el estado de $ESTADO $(grep -i "$ESTADO" covid.csv | cut -d, -f1-3 --complement | tr "," "+" | bc)"
+echo "Cambio num 1"
