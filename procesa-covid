@@ -1,0 +1,15 @@
+#Para copiar una linea presionar en modo comando yy
+#Para pegar una linea en modo comando presionar p
+#para borrar una línea en modo comando presionar dd
+#para guardar y salir :x
+#VAR=variable
+#./procesa-covid ESTADO
+#El valor de Estado se encuentra en la variable $1.
+
+#set -x
+#obtener lista
+#cat covid.csv | cut -d, -f3 |grep -v Nacional | grep -v nombre
+
+ESTADO=$1
+
+echo "Procesando el estado de $ESTADO $(grep -i "$ESTADO" covid.csv | cut -d, -f1-3 --complement | tr "," "+" | bc)"

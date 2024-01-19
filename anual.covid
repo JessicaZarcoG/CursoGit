@@ -1,0 +1,24 @@
+MES=$1
+ANIO=$2
+TEMP=$3
+
+ESTADO=$( echo $TEMP | tr [a-z] [A-Z])
+
+#0. archivo original con espacios 
+#wget hhttps://
+
+#1. sustituir espacios por guion en los nombres
+# cat CasosDiaeios | tr " " "-">covid2.csv
+
+#"2. obtener el primer renglón y trasponer
+head -n 1 covid2.csv | tr "," "\n" > ColumnaX
+
+#3. Obtener los registros para un espado y trasponer
+grep $ESTADO covid2.csv | tr "," "\n" > ColumnaY
+
+#4. Pegar los achivos de los dos pasos previos
+paste columnaX columnaY > temp.csv
+
+
+echo "El total del periodo solicitado ($MES-$ANIO) para $ESTADO es:"
+grep $MES-$ANIO temp.csv | awk '{VAR=VAR+$2}; END {print VAR }'
